@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState('all');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const projects = [
@@ -33,18 +32,18 @@ export default function Projects() {
     },
     {
       id: 4,
-      title: 'Luxe Commerce',
+      title: 'Quantum Commerce',
       category: 'web',
-      description: 'Premium e-commerce platform with AR try-on features and AI-powered recommendations.',
-      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
+      description: 'E-commerce platform with AI-powered recommendations and blockchain payment integration.',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-purple', 'accent-pink'],
     },
     {
       id: 5,
-      title: 'Creator Studio',
+      title: 'Fitness Tracker Pro',
       category: 'mobile',
-      description: 'Professional content creation suite with AI-assisted editing and collaborative features.',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
+      description: 'Advanced fitness tracking with motion capture analysis and personalized workout plans.',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-pink', 'accent-blue'],
     },
     {
@@ -57,37 +56,21 @@ export default function Projects() {
     },
   ];
 
-  const filters = [
-    { id: 'all', label: 'All' },
-    { id: 'web', label: 'Web' },
-    { id: 'mobile', label: 'Mobile' },
-    { id: '3d', label: '3D' },
-  ];
-
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
-
   // Auto-play functionality
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
     }, 4000); // Change slide every 4 seconds
 
     return () => clearInterval(timer);
-  }, [filteredProjects.length]);
-
-  // Reset index when filter changes
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [activeFilter]);
+  }, [projects.length]);
 
   const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
@@ -108,38 +91,11 @@ export default function Projects() {
           </p>
         </motion.div>
         
-        {/* Project Filter */}
-        <motion.div
-          className="flex justify-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex space-x-4 bg-dark rounded-full p-2">
-            {filters.map((filter) => (
-              <motion.button
-                key={filter.id}
-                className={`px-6 py-3 rounded-full transition-all ${
-                  activeFilter === filter.id
-                    ? 'bg-accent-purple text-white'
-                    : 'hover:bg-accent-purple/20'
-                }`}
-                onClick={() => setActiveFilter(filter.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {filter.label}
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
-        
         {/* Project Carousel */}
         <div className="relative max-w-5xl mx-auto">
           <div className="overflow-hidden rounded-3xl">
             <AnimatePresence mode="wait">
-              {filteredProjects.length > 0 && (
+              {projects.length > 0 && (
                 <motion.div
                   key={currentIndex}
                   className="bg-dark rounded-3xl overflow-hidden glow-effect"
@@ -152,8 +108,8 @@ export default function Projects() {
                     {/* Project Image */}
                     <div className="md:w-1/2 relative overflow-hidden">
                       <motion.img 
-                        src={filteredProjects[currentIndex].image} 
-                        alt={filteredProjects[currentIndex].description}
+                        src={projects[currentIndex].image} 
+                        alt={projects[currentIndex].description}
                         className="w-full h-80 md:h-96 object-cover"
                         initial={{ scale: 1.1 }}
                         animate={{ scale: 1 }}
@@ -170,28 +126,28 @@ export default function Projects() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                       >
                         <div className="flex items-center justify-between mb-6">
-                          <span className={`text-xs bg-accent-purple/20 text-accent-purple px-3 py-1 rounded-full uppercase tracking-wider`}>
-                            {filteredProjects[currentIndex].category}
+                          <span className="text-xs bg-accent-purple/20 text-accent-purple px-3 py-1 rounded-full uppercase tracking-wider">
+                            {projects[currentIndex].category}
                           </span>
                           <span className="text-sm text-gray-400">
-                            {currentIndex + 1} / {filteredProjects.length}
+                            {currentIndex + 1} / {projects.length}
                           </span>
                         </div>
                         
                         <h3 className="text-3xl md:text-4xl font-black mb-4 gradient-text">
-                          {filteredProjects[currentIndex].title}
+                          {projects[currentIndex].title}
                         </h3>
                         
                         <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                          {filteredProjects[currentIndex].description}
+                          {projects[currentIndex].description}
                         </p>
                         
                         <div className="flex items-center justify-between">
                           <div className="flex space-x-3">
-                            {filteredProjects[currentIndex].colors.map((color, i) => (
+                            {projects[currentIndex].colors.map((color, i) => (
                               <span 
                                 key={i}
-                                className={`w-4 h-4 rounded-full`}
+                                className="w-4 h-4 rounded-full"
                                 style={{ 
                                   background: color === 'accent-purple' ? 'hsl(256, 87%, 66%)' : 
                                              color === 'accent-pink' ? 'hsl(326, 78%, 60%)' : 
@@ -243,7 +199,7 @@ export default function Projects() {
             
             {/* Dots Indicator */}
             <div className="flex space-x-2">
-              {filteredProjects.map((_, index) => (
+              {projects.map((_, index) => (
                 <motion.button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
