@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const projects = [
     {
@@ -67,6 +68,28 @@ export default function Projects() {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  // Auto-play functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [filteredProjects.length]);
+
+  // Reset index when filter changes
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [activeFilter]);
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+  };
+
   return (
     <section id="projects" className="py-24 bg-dark-light">
       <div className="max-w-7xl mx-auto px-6">
@@ -112,66 +135,136 @@ export default function Projects() {
           </div>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="bg-dark rounded-2xl overflow-hidden glow-effect group"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -10,
-                rotateX: 5,
-                transition: { duration: 0.4 }
-              }}
-            >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.description}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                  <span className={`text-xs bg-${project.colors[0]}/20 text-${project.colors[0]} px-2 py-1 rounded-full uppercase`}>
-                    {project.category}
-                  </span>
-                </div>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-2">
-                    {project.colors.map((color, i) => (
-                      <span 
-                        key={i}
-                        className={`w-3 h-3 bg-${color} rounded-full`}
+        {/* Project Carousel */}
+        <div className="relative max-w-5xl mx-auto">
+          <div className="overflow-hidden rounded-3xl">
+            <AnimatePresence mode="wait">
+              {filteredProjects.length > 0 && (
+                <motion.div
+                  key={currentIndex}
+                  className="bg-dark rounded-3xl overflow-hidden glow-effect"
+                  initial={{ opacity: 0, x: 300 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -300 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
+                  <div className="md:flex">
+                    {/* Project Image */}
+                    <div className="md:w-1/2 relative overflow-hidden">
+                      <motion.img 
+                        src={filteredProjects[currentIndex].image} 
+                        alt={filteredProjects[currentIndex].description}
+                        className="w-full h-80 md:h-96 object-cover"
+                        initial={{ scale: 1.1 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.8 }}
                       />
-                    ))}
+                      <div className="absolute inset-0 bg-gradient-to-r from-dark/80 via-transparent to-transparent" />
+                    </div>
+                    
+                    {/* Project Details */}
+                    <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                      >
+                        <div className="flex items-center justify-between mb-6">
+                          <span className={`text-xs bg-accent-purple/20 text-accent-purple px-3 py-1 rounded-full uppercase tracking-wider`}>
+                            {filteredProjects[currentIndex].category}
+                          </span>
+                          <span className="text-sm text-gray-400">
+                            {currentIndex + 1} / {filteredProjects.length}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-3xl md:text-4xl font-black mb-4 gradient-text">
+                          {filteredProjects[currentIndex].title}
+                        </h3>
+                        
+                        <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                          {filteredProjects[currentIndex].description}
+                        </p>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex space-x-3">
+                            {filteredProjects[currentIndex].colors.map((color, i) => (
+                              <span 
+                                key={i}
+                                className={`w-4 h-4 rounded-full`}
+                                style={{ 
+                                  background: color === 'accent-purple' ? 'hsl(256, 87%, 66%)' : 
+                                             color === 'accent-pink' ? 'hsl(326, 78%, 60%)' : 
+                                             'hsl(244, 78%, 63%)'
+                                }}
+                              />
+                            ))}
+                          </div>
+                          
+                          <div className="flex space-x-4">
+                            <motion.a
+                              href="#"
+                              className="flex items-center space-x-2 px-4 py-2 bg-accent-purple/20 rounded-full hover:bg-accent-purple transition-colors text-sm"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <Github size={16} />
+                              <span>Code</span>
+                            </motion.a>
+                            <motion.a
+                              href="#"
+                              className="flex items-center space-x-2 px-4 py-2 bg-accent-blue/20 rounded-full hover:bg-accent-blue transition-colors text-sm"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <ExternalLink size={16} />
+                              <span>Live</span>
+                            </motion.a>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
                   </div>
-                  <div className="flex space-x-3">
-                    <motion.button
-                      className="hover:text-accent-purple transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ExternalLink size={16} />
-                    </motion.button>
-                    <motion.button
-                      className="hover:text-accent-purple transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Github size={16} />
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          
+          {/* Navigation Controls */}
+          <div className="flex justify-between items-center mt-8">
+            <motion.button
+              onClick={prevProject}
+              className="p-3 bg-dark rounded-full hover:bg-accent-purple/20 transition-colors border border-gray-700"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronLeft size={20} />
+            </motion.button>
+            
+            {/* Dots Indicator */}
+            <div className="flex space-x-2">
+              {filteredProjects.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentIndex ? 'bg-accent-purple' : 'bg-gray-600'
+                  }`}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
+                />
+              ))}
+            </div>
+            
+            <motion.button
+              onClick={nextProject}
+              className="p-3 bg-dark rounded-full hover:bg-accent-purple/20 transition-colors border border-gray-700"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronRight size={20} />
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>
