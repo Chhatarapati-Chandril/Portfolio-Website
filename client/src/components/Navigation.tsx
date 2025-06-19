@@ -53,7 +53,11 @@ export default function Navigation() {
     <>
       {/* Desktop Vertical Navigation */}
       <motion.nav
-        className="fixed left-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
+        className="fixed left-8 z-40 hidden lg:block"
+        style={{ 
+          top: '50%', 
+          transform: 'translateY(-50%)'
+        }}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
