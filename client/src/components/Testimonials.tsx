@@ -72,39 +72,43 @@ export default function Testimonials() {
         </motion.div>
         
         <div className="relative max-w-4xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              className="text-center"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -50, scale: 0.9 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            >
-              <div className="mb-8">
-                <motion.div
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                >
-                  <Quote className="text-4xl text-accent-purple mb-6 mx-auto" />
-                </motion.div>
-                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8 italic">
-                  "{testimonials[currentIndex].quote}"
-                </p>
-              </div>
-              <div>
-                <motion.img 
-                  src={testimonials[currentIndex].image} 
-                  alt={`Professional headshot of ${testimonials[currentIndex].author}`}
-                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-accent-purple/30" 
-                  whileHover={{ scale: 1.1, borderColor: "rgba(139, 92, 246, 0.8)" }}
-                  transition={{ duration: 0.3 }}
-                />
-                <h4 className="text-xl font-bold text-white">{testimonials[currentIndex].author}</h4>
-                <p className="text-accent-purple font-medium">{testimonials[currentIndex].role}</p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          <div className="min-h-[400px] flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className="text-center w-full"
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -50, scale: 0.9 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                <div className="mb-8">
+                  <motion.div
+                    animate={{ rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  >
+                    <Quote className="text-4xl text-accent-purple mb-6 mx-auto" />
+                  </motion.div>
+                  <div className="min-h-[120px] flex items-center justify-center">
+                    <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8 italic">
+                      "{testimonials[currentIndex].quote}"
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <motion.img 
+                    src={testimonials[currentIndex].image} 
+                    alt={`Professional headshot of ${testimonials[currentIndex].author}`}
+                    className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-accent-purple/30" 
+                    whileHover={{ scale: 1.1, borderColor: "rgba(139, 92, 246, 0.8)" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <h4 className="text-xl font-bold text-white">{testimonials[currentIndex].author}</h4>
+                  <p className="text-accent-purple font-medium">{testimonials[currentIndex].role}</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
           
           {/* Navigation Controls */}
           <div className="flex justify-between items-center mt-12">
