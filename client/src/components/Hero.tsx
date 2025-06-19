@@ -55,8 +55,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <span className="block">Alex</span>
-          <span className="block gradient-text">Rivera</span>
+          <span className="block">Chhatarapati</span>
+          <span className="block gradient-text">Chandril</span>
         </motion.h1>
         
         <motion.p

@@ -26,7 +26,7 @@ export default function About() {
               About <span className="gradient-text">Me</span>
             </h2>
             <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              I'm a passionate creative developer with over 6 years of experience crafting digital experiences that blur the line between art and technology. My work combines cutting-edge development with stunning visual design.
+              I'm Chhatarapati Chandril, a passionate creative developer with over 6 years of experience crafting digital experiences that blur the line between art and technology. My work combines cutting-edge development with stunning visual design.
             </p>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
               From interactive web applications to immersive digital installations, I specialize in bringing bold ideas to life through code, creativity, and attention to detail.
@@ -65,7 +65,7 @@ export default function About() {
           >
             <img 
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=1000" 
-              alt="Professional headshot of Alex Rivera" 
+              alt="Professional headshot of Chhatarapati Chandril" 
               className="rounded-2xl shadow-2xl w-full max-w-md mx-auto" 
             />
             <motion.div

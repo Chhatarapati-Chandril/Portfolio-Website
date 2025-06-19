@@ -12,8 +12,8 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="font-mono text-2xl font-bold gradient-text mb-2">AR</div>
-            <p className="text-gray-400">© 2024 Alex Rivera. All rights reserved.</p>
+            <div className="font-mono text-2xl font-bold gradient-text mb-2">CC</div>
+            <p className="text-gray-400">© 2024 Chhatarapati Chandril. All rights reserved.</p>
           </motion.div>
           
           <motion.div

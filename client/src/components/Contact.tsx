@@ -53,7 +53,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      info: 'alex@alexrivera.dev',
+      info: 'chhatarapati@chandril.dev',
       color: 'accent-purple',
     },
     {
