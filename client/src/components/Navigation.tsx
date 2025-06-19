@@ -24,7 +24,7 @@ export default function Navigation() {
         scrollPosition = document.documentElement.scrollHeight - window.innerHeight;
       } else {
         const elementPosition = element.offsetTop;
-        scrollPosition = elementPosition - 100; // Add 100px gap from top for other sections
+        scrollPosition = elementPosition - 80; // Add 80px gap from top for other sections
       }
       
       window.scrollTo({
