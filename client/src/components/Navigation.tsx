@@ -17,11 +17,18 @@ export default function Navigation() {
   const scrollToSection = (href: string, sectionName: string) => {
     const element = document.querySelector(href) as HTMLElement;
     if (element) {
-      const elementPosition = element.offsetTop;
-      const offsetPosition = elementPosition - 100; // Add 100px gap from top
+      let scrollPosition;
+      
+      // For contact section, scroll to the very bottom
+      if (sectionName.toLowerCase() === 'contact') {
+        scrollPosition = document.documentElement.scrollHeight - window.innerHeight;
+      } else {
+        const elementPosition = element.offsetTop;
+        scrollPosition = elementPosition - 100; // Add 100px gap from top for other sections
+      }
       
       window.scrollTo({
-        top: offsetPosition,
+        top: scrollPosition,
         behavior: 'smooth'
       });
       setActiveSection(sectionName.toLowerCase());
