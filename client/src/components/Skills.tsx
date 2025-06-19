@@ -5,10 +5,10 @@ export default function Skills() {
   const [animateSkills, setAnimateSkills] = useState(false);
 
   const skills = [
-    { name: 'Frontend Development', level: 95, color: 'from-accent-purple to-accent-pink' },
-    { name: '3D & Animation', level: 90, color: 'from-accent-pink to-accent-blue' },
-    { name: 'Backend Development', level: 85, color: 'from-accent-blue to-accent-purple' },
-    { name: 'UI/UX Design', level: 88, color: 'from-accent-purple to-accent-pink' },
+    { name: 'Frontend Development', level: 95, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
+    { name: '3D & Animation', level: 90, gradient: 'linear-gradient(to right, hsl(326, 78%, 60%), hsl(244, 78%, 63%))' },
+    { name: 'Backend Development', level: 85, gradient: 'linear-gradient(to right, hsl(244, 78%, 63%), hsl(256, 87%, 66%))' },
+    { name: 'UI/UX Design', level: 88, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
   ];
 
   const timeline = [
@@ -90,7 +90,8 @@ export default function Skills() {
                   </div>
                   <div className="bg-gray-800 rounded-full h-3 overflow-hidden">
                     <motion.div
-                      className={`bg-gradient-to-r ${skill.color} h-full rounded-full`}
+                      className="h-full rounded-full"
+                      style={{ background: skill.gradient }}
                       initial={{ width: 0 }}
                       animate={{ width: animateSkills ? `${skill.level}%` : 0 }}
                       transition={{ duration: 2, delay: index * 0.2, ease: "easeInOut" }}
