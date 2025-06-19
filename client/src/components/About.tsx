@@ -26,10 +26,10 @@ export default function About() {
               About <span className="gradient-text">Me</span>
             </h2>
             <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              I'm Chhatarapati Chandril, a passionate creative developer with over 6 years of experience crafting digital experiences that blur the line between art and technology. My work combines cutting-edge development with stunning visual design.
+              I'm Chhatarapati Chandril, an enthusiastic aspiring developer passionate about creating digital experiences that combine technology with creative design. I'm dedicated to learning and building my skills in modern web development.
             </p>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              From interactive web applications to immersive digital installations, I specialize in bringing bold ideas to life through code, creativity, and attention to detail.
+              Currently focused on mastering web technologies and exploring creative coding possibilities, I'm excited to start my journey in bringing innovative ideas to life through clean code and thoughtful design.
             </p>
             
             <div className="flex flex-wrap gap-4 mb-8">

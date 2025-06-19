@@ -8,49 +8,49 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: 'Nexus Analytics',
+      title: 'Learning Dashboard',
       category: 'web',
-      description: 'Interactive data visualization platform with real-time analytics and 3D chart rendering.',
+      description: 'Personal project tracking my coding journey with interactive progress charts and skill development.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-purple', 'accent-pink', 'accent-blue'],
     },
     {
       id: 2,
-      title: 'Mindful Mobile',
+      title: 'Study Companion',
       category: 'mobile',
-      description: 'Meditation and wellness app with immersive 3D environments and biometric integration.',
+      description: 'Simple mobile-first app design for organizing study materials and tracking learning goals.',
       image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-pink', 'accent-blue'],
     },
     {
       id: 3,
-      title: 'Spatial Gallery',
+      title: 'CSS Art Gallery',
       category: '3d',
-      description: 'Virtual reality art gallery with physics-based interactions and dynamic lighting.',
+      description: 'Creative experiments with CSS animations and 3D transforms to explore visual design possibilities.',
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-blue', 'accent-purple'],
     },
     {
       id: 4,
-      title: 'Quantum Commerce',
+      title: 'Portfolio Website',
       category: 'web',
-      description: 'E-commerce platform with AI-powered recommendations and blockchain payment integration.',
+      description: 'This very website! Built with React and modern web technologies as a learning project.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-purple', 'accent-pink'],
     },
     {
       id: 5,
-      title: 'Fitness Tracker Pro',
-      category: 'mobile',
-      description: 'Advanced fitness tracking with motion capture analysis and personalized workout plans.',
+      title: 'Recipe Finder',
+      category: 'web',
+      description: 'Practice project using APIs to search and display recipes with responsive design principles.',
       image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-pink', 'accent-blue'],
     },
     {
       id: 6,
-      title: 'Neural Network',
+      title: 'Code Challenges',
       category: '3d',
-      description: 'Interactive 3D visualization of machine learning algorithms and data flow patterns.',
+      description: 'Collection of creative coding exercises and algorithm practice visualizations.',
       image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
       colors: ['accent-blue', 'accent-purple'],
     },
@@ -87,7 +87,7 @@ export default function Projects() {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            A showcase of my latest work, pushing the boundaries of web development and creative design.
+            A collection of my learning projects and creative experiments as I develop my skills in web development.
           </p>
         </motion.div>
         

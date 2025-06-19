@@ -84,8 +84,8 @@ export default function Hero() {
             View My Work
           </motion.button>
           <motion.button
-            className="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-dark transition-all duration-300"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255,255,255,0.5)" }}
+            className="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 hover:border-accent-purple transition-all duration-300"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
               const contactSection = document.querySelector('#contact') as HTMLElement;

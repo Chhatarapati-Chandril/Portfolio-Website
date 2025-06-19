@@ -5,10 +5,10 @@ export default function Skills() {
   const [animateSkills, setAnimateSkills] = useState(false);
 
   const skills = [
-    { name: 'Frontend Development', level: 95, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
-    { name: '3D & Animation', level: 90, gradient: 'linear-gradient(to right, hsl(326, 78%, 60%), hsl(244, 78%, 63%))' },
-    { name: 'Backend Development', level: 85, gradient: 'linear-gradient(to right, hsl(244, 78%, 63%), hsl(256, 87%, 66%))' },
-    { name: 'UI/UX Design', level: 88, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
+    { name: 'Frontend Development', level: 65, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
+    { name: '3D & Animation', level: 45, gradient: 'linear-gradient(to right, hsl(326, 78%, 60%), hsl(244, 78%, 63%))' },
+    { name: 'Backend Development', level: 40, gradient: 'linear-gradient(to right, hsl(244, 78%, 63%), hsl(256, 87%, 66%))' },
+    { name: 'UI/UX Design', level: 55, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
   ];
 
   const timeline = [
