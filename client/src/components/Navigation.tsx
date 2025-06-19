@@ -53,41 +53,43 @@ export default function Navigation() {
     <>
       {/* Desktop Horizontal Navigation */}
       <motion.nav
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden lg:block"
+        className="fixed top-6 left-0 right-0 z-40 hidden lg:block"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <motion.div 
-          className="flex items-center bg-dark-light/90 backdrop-blur-xl border border-gray-700/50 rounded-full px-6 py-3 shadow-2xl"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.2 }}
-        >
-          {navItems.map((item, index) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.name.toLowerCase();
-            
-            return (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href, item.name)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 mx-1 ${
-                  isActive 
-                    ? 'bg-gradient-to-r from-accent-purple to-accent-pink text-white shadow-lg' 
-                    : 'hover:bg-white/10 text-gray-300 hover:text-white'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Icon size={16} />
-                <span className="text-sm font-medium">{item.name}</span>
-              </motion.button>
-            );
-          })}
-        </motion.div>
+        <div className="flex justify-center w-full">
+          <motion.div 
+            className="flex items-center bg-dark-light/90 backdrop-blur-xl border border-gray-700/50 rounded-full px-6 py-3 shadow-2xl"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
+            {navItems.map((item, index) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.name.toLowerCase();
+              
+              return (
+                <motion.button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href, item.name)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 mx-1 ${
+                    isActive 
+                      ? 'bg-gradient-to-r from-accent-purple to-accent-pink text-white shadow-lg' 
+                      : 'hover:bg-white/10 text-gray-300 hover:text-white'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Icon size={16} />
+                  <span className="text-sm font-medium">{item.name}</span>
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        </div>
       </motion.nav>
 
       {/* Mobile Navigation */}
@@ -142,17 +144,7 @@ export default function Navigation() {
         )}
       </motion.div>
 
-      {/* Brand Logo - Top Left */}
-      <motion.div
-        className="fixed top-6 left-6 z-50"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        <div className="font-mono text-lg font-bold gradient-text bg-dark-light/90 backdrop-blur-xl border border-gray-700/50 rounded-2xl w-14 h-14 flex items-center justify-center shadow-2xl">
-          CC
-        </div>
-      </motion.div>
+
     </>
   );
 }
