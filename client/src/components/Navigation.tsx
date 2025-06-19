@@ -15,9 +15,15 @@ export default function Navigation() {
   ];
 
   const scrollToSection = (href: string, sectionName: string) => {
-    const element = document.querySelector(href);
+    const element = document.querySelector(href) as HTMLElement;
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = element.offsetTop;
+      const offsetPosition = elementPosition - 100; // Add 100px gap from top
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
       setActiveSection(sectionName.toLowerCase());
     }
     setIsOpen(false);
@@ -31,7 +37,7 @@ export default function Navigation() {
         element: document.querySelector(item.href)
       }));
 
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 200; // Adjusted for the new offset
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
