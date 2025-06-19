@@ -223,13 +223,33 @@ export default function Contact() {
                   )}
                 />
                 
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-accent-purple to-accent-pink hover:scale-[1.02] transition-all glow-effect"
-                  disabled={contactMutation.isPending}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {contactMutation.isPending ? 'Sending...' : 'Send Message'}
-                </Button>
+                  <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-accent-purple to-accent-pink hover:from-accent-purple/90 hover:to-accent-pink/90 text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:shadow-accent-purple/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={contactMutation.isPending}
+                  >
+                    {contactMutation.isPending ? (
+                      <div className="flex items-center space-x-2">
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Sending Message...</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center space-x-2">
+                        <span>Send Message</span>
+                        <motion.div
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          →
+                        </motion.div>
+                      </div>
+                    )}
+                  </Button>
+                </motion.div>
               </form>
             </Form>
           </motion.div>

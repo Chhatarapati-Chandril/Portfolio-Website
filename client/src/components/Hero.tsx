@@ -84,10 +84,19 @@ export default function Hero() {
             View My Work
           </motion.button>
           <motion.button
-            className="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-dark transition-all"
-            whileHover={{ scale: 1.05 }}
+            className="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-dark transition-all duration-300"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255,255,255,0.5)" }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const contactSection = document.querySelector('#contact') as HTMLElement;
+              if (contactSection) {
+                const scrollPosition = document.documentElement.scrollHeight - window.innerHeight;
+                window.scrollTo({
+                  top: scrollPosition,
+                  behavior: 'smooth'
+                });
+              }
+            }}
           >
             Get In Touch
           </motion.button>

@@ -48,9 +48,18 @@ export default function About() {
             </div>
             
             <motion.button
-              className="bg-white text-dark px-8 py-4 rounded-full font-semibold transition-all"
-              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-accent-purple to-accent-pink text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-accent-purple/25 transition-all duration-300"
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(139, 92, 246, 0.3)" }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                // Create a temporary link to download resume
+                const link = document.createElement('a');
+                link.href = '#'; // Replace with actual resume URL
+                link.download = 'Chhatarapati_Chandril_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
             >
               Download Resume
             </motion.button>
