@@ -11,29 +11,29 @@ export default function Skills() {
     { name: 'UI/UX Design', level: 55, gradient: 'linear-gradient(to right, hsl(256, 87%, 66%), hsl(326, 78%, 60%))' },
   ];
 
-  const timeline = [
-    {
-      title: 'Senior Creative Developer',
-      company: 'Digital Nexus',
-      period: '2022 - Present',
-      color: 'accent-purple',
-      description: 'Leading innovative web experiences at Digital Nexus, specializing in immersive 3D interfaces and interactive installations.',
-    },
-    {
-      title: 'Frontend Architect',
-      company: 'TechForward',
-      period: '2020 - 2022',
-      color: 'accent-pink',
-      description: 'Architected scalable frontend solutions at TechForward, focusing on performance optimization and user experience.',
-    },
-    {
-      title: 'Full Stack Developer',
-      company: 'StartupHub',
-      period: '2018 - 2020',
-      color: 'accent-blue',
-      description: 'Developed end-to-end solutions at StartupHub, working with cutting-edge technologies and agile methodologies.',
-    },
-  ];
+  // const timeline = [
+  //   {
+  //     title: 'Senior Creative Developer',
+  //     company: 'Digital Nexus',
+  //     period: '2022 - Present',
+  //     color: 'accent-purple',
+  //     description: 'Leading innovative web experiences at Digital Nexus, specializing in immersive 3D interfaces and interactive installations.',
+  //   },
+  //   {
+  //     title: 'Frontend Architect',
+  //     company: 'TechForward',
+  //     period: '2020 - 2022',
+  //     color: 'accent-pink',
+  //     description: 'Architected scalable frontend solutions at TechForward, focusing on performance optimization and user experience.',
+  //   },
+  //   {
+  //     title: 'Full Stack Developer',
+  //     company: 'StartupHub',
+  //     period: '2018 - 2020',
+  //     color: 'accent-blue',
+  //     description: 'Developed end-to-end solutions at StartupHub, working with cutting-edge technologies and agile methodologies.',
+  //   },
+  // ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -108,8 +108,8 @@ export default function Skills() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold mb-8">Experience Timeline</h3>
-            <div className="space-y-6">
+            {/* <h3 className="text-2xl font-bold mb-8">Experience Timeline</h3> */}
+            {/* <div className="space-y-6">
               {timeline.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -127,7 +127,7 @@ export default function Skills() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>

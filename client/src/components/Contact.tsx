@@ -11,7 +11,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 
+import ScrollVelocity from './ScrollVelocity';
+
+
 export default function Contact() {
+
+
+
   const { toast } = useToast();
   
   const form = useForm<InsertContact>({
@@ -53,35 +59,46 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      info: 'chhatarapati@chandril.dev',
+      info: 'chandril6a@gmail.com',
+      href: 'mailto:chandril6a@gmail.com',
       color: 'accent-purple',
     },
-    {
-      icon: Phone,
-      title: 'Phone',
-      info: '+1 (555) 123-4567',
-      color: 'accent-pink',
-    },
-    {
-      icon: MapPin,
-      title: 'Location',
-      info: 'San Francisco, CA',
-      color: 'accent-blue',
-    },
+    // {
+    //   icon: Phone,
+    //   title: 'Phone',
+    //   info: '+91 94661-35606',
+    //   color: 'accent-pink',
+    // },
+    // {
+    //   icon: MapPin,
+    //   title: 'Location',
+    //   info: 'Delhi, IN',
+    //   color: 'accent-blue',
+    // },
   ];
 
   const socialLinks = [
-    { name: 'Twitter', icon: 'fa-twitter', href: '#' },
-    { name: 'LinkedIn', icon: 'fa-linkedin', href: '#' },
-    { name: 'GitHub', icon: 'fa-github', href: '#' },
-    { name: 'Dribbble', icon: 'fa-dribbble', href: '#' },
+    { name: 'Instagram', icon: 'fa-instagram', href: 'https://www.instagram.com/__chandril__/', target: '_blank' },
+    { name: 'LinkedIn', icon: 'fa-linkedin', href: 'https://www.linkedin.com/in/chandril/', target: '_blank' },
+    { name: 'GitHub', icon: 'fa-github', href: 'https://github.com/Chhatarapati-Chandril', target: '_blank' },
+    { name: 'Whatsapp', icon: 'fa-whatsapp', href: 'https://wa.me/919466135606', target: '_blank' },
+    { name: 'Telegram', icon: 'fa-telegram', href: 'https://telegram.me/CChandril', target: '_blank' }
   ];
 
   return (
+
+    
     <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/10 via-transparent to-accent-pink/10" />
+
+        <ScrollVelocity
+          texts={["Let's Connect - ", "Text Me ! "]} 
+          velocity={70} 
+          className="custom-scroll-text "
+        />
+
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/10 via-transparent to-accent-pink/10" /> */}
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 py-16">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
@@ -89,9 +106,9 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-black mb-6">
+          {/* <h2 className="text-5xl font-black mb-6">
             Let's <span className="gradient-text">Connect</span>
-          </h2>
+          </h2> */}
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Ready to bring your next project to life? Let's discuss how we can create something extraordinary together.
           </p>
@@ -104,7 +121,7 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold mb-8">Get In Touch</h3>
+            <h3 className="text-2xl font-bold mb-8">Connect with me</h3>
             <div className="space-y-6">
               {contactInfo.map((item, index) => (
                 <motion.div
@@ -114,6 +131,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
+
                 >
                   <div className={`w-12 h-12 bg-${item.color}/20 rounded-full flex items-center justify-center`}>
                     <item.icon className={`text-${item.color}`} size={20} />
@@ -127,12 +145,13 @@ export default function Contact() {
             </div>
             
             <div className="mt-12">
-              <h4 className="font-semibold mb-4">Follow Me</h4>
+              {/* <h4 className="font-semibold mb-4">Connect with Me</h4> */}
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
                     href={social.href}
+                    target={social.target} 
                     className="w-12 h-12 bg-dark-light rounded-full flex items-center justify-center hover:bg-accent-purple transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}

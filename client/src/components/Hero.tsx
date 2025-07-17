@@ -1,3 +1,4 @@
+import DotGrid from './DotGrid';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
@@ -11,12 +12,27 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* DotGrid Background */}
+      <div className="absolute inset-0 z-0">
+        <DotGrid
+          dotSize={6}
+          gap={35}
+          baseColor="#271E37"
+          activeColor="#5227FF"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/20 via-transparent to-accent-pink/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/20 via-transparent to-accent-pink/20 z-10"></div>
       
       {/* Background Elements */}
       <motion.div
-        className="absolute top-20 left-20 w-64 h-64 bg-accent-purple/10 rounded-full blur-3xl"
+        className="absolute top-20 left-20 w-64 h-64 bg-accent-purple/10 rounded-full blur-3xl z-10"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.6, 0.3],
@@ -28,7 +44,7 @@ export default function Hero() {
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-20 w-96 h-96 bg-accent-pink/10 rounded-full blur-3xl"
+        className="absolute bottom-20 right-20 w-96 h-96 bg-accent-pink/10 rounded-full blur-3xl z-10"
         animate={{
           y: [0, -20, 0],
         }}
@@ -39,14 +55,14 @@ export default function Hero() {
         }}
       />
 
-      <div className="text-center z-10 max-w-6xl mx-auto px-6">
+      <div className="text-center z-20 max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-6"
         >
-          <span className="font-mono text-accent-purple text-sm tracking-wider">CREATIVE DEVELOPER</span>
+          {/* <span className="font-mono text-accent-purple text-sm tracking-wider">CREATIVE DEVELOPER</span> */}
         </motion.div>
         
         <motion.h1
@@ -65,8 +81,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Crafting digital experiences that push boundaries and challenge conventions. 
-          Where innovation meets artistry.
+          <span className="font-mono text-accent-purple text-sm tracking-wider justify-center">
+            CRAFTING DIGITAL EXPERIENCES THAT PUSH BOUNDARIES AND CHALLENGE CONVENTIONS. <br></br>
+            WHERE INNOVATION MEETS ARTISTRY.
+          </span>
         </motion.p>
         
         <motion.div
@@ -119,21 +137,21 @@ export default function Hero() {
       </div>
       
       {/* Floating 3D Elements */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-4 h-4 bg-accent-blue rounded-full"
+      {/* <motion.div
+        className="absolute top-1/4 left-1/4 w-4 h-4 bg-accent-blue rounded-full z-10"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, delay: 0 }}
       />
       <motion.div
-        className="absolute top-1/3 right-1/4 w-6 h-6 bg-accent-pink rounded-full"
+        className="absolute top-1/3 right-1/4 w-6 h-6 bg-accent-pink rounded-full z-10"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, delay: 2 }}
       />
       <motion.div
-        className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-accent-purple rounded-full"
+        className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-accent-purple rounded-full z-10"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, delay: 4 }}
-      />
+      /> */}
     </section>
   );
 }
